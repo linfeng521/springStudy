@@ -1,0 +1,10 @@
+com\linfeng\UserInfoContainer.class
+com\linfeng\aop\MyAdvice.class
+com\linfeng\Test.class
+com\linfeng\Test02.class
+com\linfeng\Department.class
+com\linfeng\UserInfo.class
+com\linfeng\aop\UserService.class
+com\linfeng\UserInfo2.class
+com\linfeng\aop\Test.class
+com\linfeng\aop\UserServiceImpl.class

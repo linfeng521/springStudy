@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- UserInfo userInfor = new UesrInfo();
+    	userInfo.setName("林峰");
+     -->
+    <bean id="userInfo" class="com.linfeng.UserInfo" init-method="init" destroy-method="destory" scope="prototype">
+    	<property name="name" value="林峰"></property>
+    	<property name="department" ref="department"></property>
+    </bean>
+    <bean id="userInfo2" class="com.linfeng.UserInfo" init-method="init" destroy-method="destory" scope="prototype">
+    	<property name="name" value="林岚"></property>
+    	<property name="department" ref="department2"></property>
+    </bean>
+    <!-- 构造器注入 索引从0开始 -->
+    <bean id="department" class="com.linfeng.Department" >
+    	<constructor-arg index="0" value="102"></constructor-arg>
+    	<constructor-arg index="1" value="研发部"></constructor-arg>
+    </bean>
+    <bean id="department2" class="com.linfeng.Department">
+    	<property name="userId" value="100"></property>
+    	<property name="name" value="多媒体技术部"></property>
+    </bean>
+    <!-- 集合测试 -->
+    <bean id="userList" class="com.linfeng.UserInfoContainer">
+    	<property name="list">
+    		<list>
+    			<ref bean="userInfo2"/>
+    			<ref bean="userInfo" />
+    		</list>
+    	</property>
+    	<property name="map">
+    		<map>
+    			<entry  key="userInfo" value-ref="userInfo"></entry>
+    			<entry  key="userInfo_linlan" value-ref="userInfo2"></entry>
+    		</map>
+    	</property>
+    </bean>
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring5.0"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="src/spring-beans-5.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/spring-context-5.0.5.RELEASE.jar" sourcepath="C:/Users/Administrator/.m2/repository/org/springframework/spring-context/5.0.5.RELEASE/spring-context-5.0.5.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="src/spring-core-5.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/spring-expression-5.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/spring-jcl-5.0.5.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

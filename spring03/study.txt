@@ -1,0 +1,48 @@
+ <!-- Bean的作用域scope：
+        	默认情况下， spring容器里的bean 只创建唯一一个实例， 默认scope="singleton"
+        	singleton:一个对象在spring IOC 容器中只有一个bean的实例， 以单个实例的方式存在（单例模式-）
+        	prototype：每次调用getBean()的时候， 创建一个新的实例
+        	request：每次http请求都会创建一个新的bean， 该作用域用于webapplicationContext
+        	session：在httpsession中共享一个bean, 用于webapplicationContext
+ -->
+ Spring依赖注入的三种方式
+ 	1. 属性注入（项目常用）
+ 		是通过setter方法注入Bean中的属性值
+ 	2. 构造器注入
+ 		constructor-arg
+ 			 1按索引下标匹配参数2 按参数类型匹配注入
+ 	3. 接口（工厂方法注入）
+ 引入其他的bean
+ 	使用ref
+ 	
+ ------------------
+ 主动装配
+ <bean autowire="byName">
+ beans : default-autowire  指定主动装配模式
+ 
+ 模式：byName bean的名称和属性名称完全相同
+ 	byType: 根据类型主动装配
+ 	constructor: 根据构造器自动装配
+ 	
+-------------------
+spring注解使用
+组件
+ ------------------
+ 集合注入
+ <property name="map">
+    		<map>
+    			<entry key="id" value="1001"></entry>
+    		</map>
+ </property>
+ <property name="list">
+    		<list>
+    			<ref bean="department"/>
+    			<ref bean="department2"/>
+</list>
+-----------------
+bean生命周期
+1.通过构造器或工厂方法创建bean
+2.为bean属性设置值和对其他Bean的应用(依赖的对象)
+3.调用Bean的初始化方法 init-method
+4.Bean可以使用
+5.当容器关闭时, 调用Bean的销毁方法;destory-method

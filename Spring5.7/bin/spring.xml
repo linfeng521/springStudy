@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- UserInfo userInfor = new UesrInfo();
+    	userInfo.setName("林峰");
+     -->
+    <bean id="userInfo" class="com.linfeng.UserInfo" autowire="byName" init-method="init" destroy-method="destory">
+    	<property name="name" value="林峰"></property>
+    	<!-- autowire="byName" 自动装配如果一个 bean 定义设置为自动装配 byName，并且它包含 department 属性（即，它有一个 setdepartment(...) 方法），那么 Spring 就会查找定义名为 department 的 bean，并且用它来设置这个属性 -->
+    	<!-- <property name="department" ref="department"></property> 引用装配bean-->
+    	<!-- <property name="department">
+    		<bean id="department0" class="com.linfeng.Department">
+	    		<property name="userId" value="001"></property>
+	    		<property name="name" value="创业园区"></property>
+    		</bean>
+    	</property> 自身配置内部的bean-->
+    </bean>
+    <bean id="student" class="com.linfeng.Student">
+    	<property name="age" value="21"></property>
+    </bean>
+    <!-- 构造器注入 索引从0开始 -->
+    <bean id="department" class="com.linfeng.Department" >
+    	<constructor-arg index="0" value="102"></constructor-arg>
+    	<constructor-arg index="1" value="研发部"></constructor-arg>
+    </bean>
+     <bean id="department2" class="com.linfeng.Department" >
+    	<constructor-arg type="Integer" value="103"></constructor-arg>
+    	<constructor-arg type ="String" value="技术部"></constructor-arg>
+    </bean>
+    
+    <!-- 集合注入 -->
+    <bean id="userInfo2" class="com.linfeng.UserInfo2">
+    	<property name="sets">
+    		<set>
+    			<value>张三</value>
+    			<value>李四</value>
+    			<value>王五</value>
+    		</set>
+    	</property>
+    	<property name="map">
+    		<map>
+    			<entry key="id" value="1001"></entry>
+    			<entry key="name" value="linfeng"></entry>
+    		</map>
+    	</property>
+    	<property name="list">
+    		<list>
+    			<ref bean="department"/>
+    			<ref bean="department2"/>
+    		</list>
+    	</property>
+    </bean>
+</beans>

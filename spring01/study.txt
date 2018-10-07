@@ -1,0 +1,56 @@
+ <!-- Bean的作用域scope：
+        	默认情况下， spring容器里的bean 只创建唯一一个实例， 默认scope="singleton"
+        	singleton:一个对象在spring IOC 容器中只有一个bean的实例， 以单个实例的方式存在（单例模式-）
+        	prototype：每次调用getBean()的时候， 创建一个新的实例
+        	request：每次http请求都会创建一个新的bean， 该作用域用于webapplicationContext
+        	session：在httpsession中共享一个bean, 用于webapplicationContext
+ -->
+ Spring依赖注入的三种方式
+ 	1. 属性注入（项目常用）
+ 		是通过setter方法注入Bean中的属性值
+ 	2. 构造器注入
+ 		constructor-arg
+ 			 1按索引下标匹配参数2 按参数类型匹配注入
+ 	3. 接口（工厂方法注入）
+ 引入其他的bean
+ 	使用ref
+ 	
+ value 属性来配置基本数据类型和在你的 bean 配置文件中使用<property>标签的 ref 属性来配置对象引用	
+ ------------------
+ 主动装配
+ <bean autowire="byName">
+ beans : default-autowire  指定主动装配模式
+ 
+ 模式：byName bean的名称和属性名称完全相同
+ 	byType: 根据类型主动装配
+ 	constructor: 根据构造器自动装配
+-------------------
+spring注解使用
+组件
+ ------------------
+ 集合注入
+ <property name="map">
+    		<map>
+    			<entry key="id" value="1001"></entry>
+    		</map>
+ </property>
+ <property name="list">
+    		<list>
+    			<ref bean="department"/>
+    			<ref bean="department2"/>
+</list>
+-----------------
+bean生命周期
+1.通过构造器或工厂方法创建bean
+2.为bean属性设置值和对其他Bean的应用(依赖的对象)
+3.调用Bean的初始化方法 init-method
+4.Bean可以使用
+5.当容器关闭时, 调用Bean的销毁方法;destory-method
+
+Spring IOC容器
+Spring容器是Spring框架的核心, 容器将创建对象把它们连接在一起，配置它们，并管理它们整个生命周期从创建到销毁．sring容器使用使用依赖注入（DI）来管理组成一个应用程序的组件。
+Spring提供两种不同类型的容器
+	SpringBeanFactory 它是最简单的容器，给 DI 提供了基本的支持，它用 org.springframework.beans.factory.BeanFactory 接口来定义。BeanFactory 或者相关的接口，如 BeanFactoryAware，InitializingBean，DisposableBean，在 Spring 中仍然存在具有大量的与 Spring 整合的第三方框架的反向兼容性的目的。
+		Spring ApplicationContext 容器
+该容器添加了更多的企业特定的功能，例如从一个属性文件中解析文本信息的能力，发布应用程序事件给感兴趣的事件监听器的能力。该容器是由 org.springframework.context.ApplicationContext 接口定义。
+ApplicationContext 容器包括 BeanFactory 容器的所有功能. 通常建议使用ApplicationContext

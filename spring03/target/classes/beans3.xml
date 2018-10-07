@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+   <!-- 1.配置目标对象 -->
+    <bean name="userService" class="com.linfeng.aop.UserServiceImpl"></bean>
+	<!-- 2.配置通知对象 -->
+    <bean name="myAdvice" class="com.linfeng.aop.MyAdvice"></bean>  
+    <!-- 3.代理对象 -->
+    <bean id = "proxyFactory" class="org.springframework.aop.framework.ProxyFactoryBean">
+    	<!-- 4.代理接口集 -->
+    	<property name="proxyInterfaces">
+    		<list>
+    			<value>com.linfeng.aop.UserService</value>
+    		</list>
+    	</property>
+    	<!-- 5.把通知织入到代理对象 -->
+    	<property name="interceptorNames">
+    		<!-- 相当于前置对象与代理对象的关联 -->
+    		<list >
+    			<value>myAdvice</value>	
+    		</list>
+    	</property>
+    	<!-- 配置被代理对象 -->
+    	<property name="target" ref="userService"></property>
+    
+    </bean> 
+</beans>
